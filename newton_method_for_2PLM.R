@@ -30,8 +30,8 @@ Newtons <- function(theta0, response, a, b, D = 1.702, lamda = 1, ep = 1e-08, ma
     Pi[Pi == 0] <- 1e-10
     Pi[Pi == 1] <- 1 - 1e-10
     Q <- 1 - Pi
-    fx <- sum(D * a * (re - Pi))       # first derivative, ie., g(¦È)
-    dfx <- -D^2 * sum(a^2 * Pi * Q)    # second derivative, ie., g'(¦È)
+    fx <- sum(D * a * (re - Pi))       # first derivative, ie., g(Î¸)
+    dfx <- -D^2 * sum(a^2 * Pi * Q)    # second derivative, ie., g'(Î¸)
     
     ## detect if the slope is zero
     if (dfx == 0) {
@@ -44,8 +44,8 @@ Newtons <- function(theta0, response, a, b, D = 1.702, lamda = 1, ep = 1e-08, ma
     ## implement the downhill algorithm
     j <- 0
     Pi1 <- 1 /(1 + exp(-D * a * (th - delta - b)))
-    fx1 <- sum(D * a * (re - Pi1))     # compute g(¦Èk+1)
-    fx0 <- fx                          # compute g(¦Èk)
+    fx1 <- sum(D * a * (re - Pi1))     # compute g(Î¸k+1)
+    fx0 <- fx                          # compute g(Î¸k)
     while (abs(fx1) >= abs(fx0)) {
       j <- j + 1
       lamda <- lamda/(2^j)
@@ -148,14 +148,14 @@ reg <- lm(est.th ~ theta[, 1])
 plot(theta[, 1], est.th,
      col = rgb(0.4, 0.4, 0.8, 0.6), pch = 16, cex = 1.3,
      cex.lab = 1.5, cex.axis = 1.5, family = "sans",
-     xlab = "true ¦È", ylab = "estimated ¦È",
+     xlab = "true Î¸", ylab = "estimated Î¸",
      xlim = c(-3.5, 3.5), ylim = c(-3.5, 3.5))
 abline(reg, lty = 1, lwd = 2, col = "red")
 abline(a = 0, b = 1, lty = 2, lwd  = 2, col = "red")
 
 ## generate a density plot
 data <- data.frame(
-  type = rep(x = c("estimated ¦È", "true ¦È"), each = nperson),
+  type = rep(x = c("estimated Î¸", "true Î¸"), each = nperson),
   theta = c(est.th, theta[, 1]))
 
 pic2 <- ggplot(data = data, aes(x = theta, group = type, fill = type)) +
