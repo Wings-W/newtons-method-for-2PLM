@@ -1,4 +1,3 @@
-# newtons-method-for-2PLM
 # maximum likelihood estimation of theta using newton's method
 
 I write these codes for my assignment.
