@@ -7,9 +7,9 @@ Project requirements:
 1. to estimate theta with known item parameters (2PLM);
 2. to compute bias and RMSE for estimated theta and true theta;
 3. given the following files:
-   response_matrix.txt
-   theta_parameter.txt
-   item_parameter.txt
+   response_matrix.txt;
+   theta_parameter.txt;
+   item_parameter.txt.
 
 The project framework:
 1. define function1: Newton-Raphson method of theta estimation for 2PLM
